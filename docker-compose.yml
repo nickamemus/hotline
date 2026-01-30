@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  synapse:
+    image: matrixdotorg/synapse:latest
+    environment:
+      - SYNAPSE_SERVER_NAME=hotline.local
+      - SYNAPSE_REPORT_STATS=no
+    ports:
+      - "8008:8008"
+    volumes:
+      - synapse-data:/data
+
+  jasmin:
+    image: jookies/jasmin
+    ports:
+      - "2775:2775"
+      - "1401:1401"
+    volumes:
+      - jasmin-data:/var/lib/jasmin
+
+  glue:
+    build: ./glue
+    ports:
+      - "8080:8080"
+    environment:
+      - MATRIX_HOMESERVER=http://synapse:8008
+      - MATRIX_ROOM_ID=!ROOMID:hotline.local
+      - MATRIX_ACCESS_TOKEN=YOUR_MATRIX_BOT_TOKEN
+      - JASMIN_API=http://jasmin:1401
+    depends_on:
+      - synapse
+      - jasmin
+
+volumes:
+  synapse-data:
+  jasmin-data:
