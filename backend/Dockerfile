@@ -1,31 +1,9 @@
-services:
-  jasmin:
-    image: jookies/jasmin
-    ports:
-      - "2775:2775"   # SMPP
-      - "1401:1401"   # HTTP API
-    volumes:
-      - jasmin-data:/var/lib/jasmin
+FROM python:3.12-slim
 
-  matrix:
-    image: matrixdotorg/synapse:latest
-    environment:
-      - SYNAPSE_SERVER_NAME=hotline.local
-      - SYNAPSE_REPORT_STATS=no
-    ports:
-      - "8008:8008"
-    volumes:
-      - synapse-data:/data
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-  glue:
-    build: ./glue
-    ports:
-      - "8080:8080"
-    environment:
-      - MATRIX_HOMESERVER=http://matrix:8008
-      - MATRIX_ROOM_ID=!roomid:hotline.local
-      - JASMIN_API=http://jasmin:1401
+COPY main.py .
 
-volumes:
-  jasmin-data:
-  synapse-data:
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
