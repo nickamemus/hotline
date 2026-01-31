@@ -2,7 +2,7 @@ services:
   synapse:
     image: matrixdotorg/synapse:latest
     environment: 
-    - SYNAPSE_CONFIG_PATH=synapse-data/data/homeserver.yaml
+    - SYNAPSE_CONFIG_PATH=synapse-data/homeserver.yaml
     ports:
       - "8008:8008"
     volumes:
