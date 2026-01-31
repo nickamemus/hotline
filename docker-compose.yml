@@ -6,7 +6,7 @@ services:
     ports:
       - "8008:8008"
     volumes:
-      - ./synapse-data
+      - ./synapse-data:/data
 
   jasmin:
     image: jookies/jasmin
