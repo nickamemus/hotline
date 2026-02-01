@@ -3,9 +3,9 @@ set -e
 
 # === CONFIGURE THESE ===
 ADMIN_USER="matrixadmin"
-ADMIN_PASS="your_admin_password"
+ADMIN_PASS="Undocked-Vendetta2-Variable"
 BOT_USER="hotline_bot"
-BOT_PASS="your_bot_password"
+BOT_PASS="12345678"
 ROOM_ALIAS="hotline:hotline.local"
 SYNAPSE_URL="http://localhost:8008"
 
