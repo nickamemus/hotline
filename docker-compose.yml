@@ -7,7 +7,7 @@ services:
       - ./synapse-data:/data
 
   jasmin:
-    image: jookies/jasmin
+    image: davidmorg/jasmin-full
     ports:
       - "2775:2775"
       - "1401:1401"
