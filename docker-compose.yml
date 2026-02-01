@@ -13,6 +13,11 @@ services:
       - "1401:1401"
     volumes:
       - jasmin-data:/var/lib/jasmin
+    environment:
+      - JASMIN_USERNAME=jcliadmin
+      - JASMIN_PASSWORD=jclipwd
+      - JASMIN_HTTP_BIND=0.0.0.0
+      - JASMIN_HTTP_PORT=1401
 
   glue:
     build: ./glue
