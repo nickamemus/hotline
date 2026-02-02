@@ -14,7 +14,7 @@ services:
       MATRIX_HOMESERVER: http://synapse:8008
       MATRIX_ROOM_ID: "!DVCWvoQBpmnGlxESOp:hotline.local"
       MATRIX_ACCESS_TOKEN: ${MATRIX_ACCESS_TOKEN}
-      JASMIN_HTTP_API: http://host.docker.internal:1401
+      JASMIN_API: http://host.docker.internal:1401
     depends_on:
       - synapse
 
