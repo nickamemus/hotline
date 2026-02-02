@@ -27,7 +27,8 @@ services:
       - MATRIX_HOMESERVER=http://synapse:8008
       - MATRIX_ROOM_ID=!ROOMID:hotline.local
       - MATRIX_ACCESS_TOKEN=YOUR_MATRIX_BOT_TOKEN
-      - JASMIN_API=http://jasmin:1401
+      - JASMIN_HTTP_API=http://host.docker.internal:1401
+
     depends_on:
       - synapse
       - jasmin
